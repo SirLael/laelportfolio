@@ -136,23 +136,47 @@ export function HeroSection() {
 function formatCodeLine(line: string) {
   if (!line.trim()) return <span>&nbsp;</span>
 
-  const keywords = ["class", "private", "async", "await", "for", "const", "return", "new", "true", "false", "void"]
-  const types = ["Map", "System", "Promise", "boolean", "number", "string"]
+  const keywords = [
+    "function",
+    "local",
+    "return",
+    "if",
+    "then",
+    "else",
+    "elseif",
+    "end",
+    "for",
+    "in",
+    "do",
+    "true",
+    "false",
+    "nil",
+  ]
 
-  const tokens = line.split(/(\s+|[{}():<>,;.=]|"[^"]*")/)
+  const types = [
+    "StateMachine",
+    "StateMachineTypes",
+  ]
+
+  const tokens = line.split(/(\s+|[{}()[\]:.=<>~]|"[^"]*"|`[^`]*`)/)
+
   return tokens.map((token, i) => {
     if (keywords.includes(token)) {
       return <span key={i} className="text-primary">{token}</span>
     }
+
     if (types.includes(token)) {
       return <span key={i} className="text-accent">{token}</span>
     }
-    if (token.startsWith('"')) {
+
+    if (token.startsWith('"') || token.startsWith("`")) {
       return <span key={i} className="text-chart-2">{token}</span>
     }
-    if (token === "//" || token.startsWith("//")) {
+
+    if (token === "--" || token.startsWith("--")) {
       return <span key={i} className="text-muted-foreground/50">{token}</span>
     }
+
     return <span key={i} className="text-foreground/80">{token}</span>
   })
 }
