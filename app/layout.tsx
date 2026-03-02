@@ -7,8 +7,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Game Programmer & Backend Engineer | Lael Portfolio',
-  description: 'Professional portfolio of Lael, a Game Programmer and Backend Engineer. High-performance systems, scalable architecture and gameplay programming.',
+  title: "Lael's Portfolio | Game Programmer & Backend Engineer",
+  description: 'Professional portfolio of Lael, a Software & Game Programmer. High-performance systems, scalable architecture and gameplay programming.',
   generator: 'Lael',
   icons: {
     icon: '/L-icon.png'
