@@ -39,6 +39,7 @@ export function AboutSection() {
           {/* Text content */}
           <div className="lg:col-span-3">
             <p className="text-pretty leading-relaxed text-muted-foreground md:text-lg">
+              My name is <strong>Brian Lael</strong>, I am <strong>19 years old</strong>, and I am a <strong>Brazilian software developer (UTC-3 / GMT-3)</strong>. 
               I am a software developer with <strong>over 8 years of programming experience</strong>, specializing in <strong>Luau and backend game systems architecture</strong>. I began programming at an early age as a self-taught developer, driven by curiosity about how systems work and how logic can be used to create interactive experiences. Since then, programming has evolved from a personal interest into my primary professional focus. I later completed a <strong>2-year Programming and Robotics certification at CTRL+PLAY</strong>, where I worked with languages such as C#, C++, and Java, and built my first structured game projects. I also completed a <strong>200-hour C programming course at Federal University of São Paulo</strong>, strengthening my understanding of low-level programming, memory, and computational logic. Currently, I am pursuing a <strong>Bachelor’s degree in Computer Science at Instituto Mauá de Tecnologia</strong>, further deepening my knowledge of algorithms, systems design, and software engineering principles.
             </p>
             <p className="mt-6 text-pretty leading-relaxed text-muted-foreground md:text-lg">
