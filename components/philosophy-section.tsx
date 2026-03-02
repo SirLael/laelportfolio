@@ -1,27 +1,51 @@
 const principles = [
   {
     number: "01",
-    title: "Separation of Concerns",
+    title: "Server-Authoritative Backend",
     description:
-      "Each module, service and system should have a single, well-defined responsibility. This makes testing, maintenance and independent evolution of each part of the system easier.",
+      "I design systems with a strictly server-authoritative model. Clients are treated as input devices, not trusted entities. All critical validation happens server-side to ensure security, consistency, and exploit resistance.",
   },
   {
     number: "02",
-    title: "Data-Driven Design",
+    title: "Separation of Concerns",
     description:
-      "Behaviors and configurations should be defined by data, not code. This enables rapid iteration, gameplay hot-reload and separation between designers and engineers.",
+      "Systems are structured around clear responsibility boundaries. Each module or service handles a single well-defined concern, reducing coupling, improving readability, and allowing safe scaling of complex projects.",
   },
   {
     number: "03",
-    title: "Resilience by Design",
+    title: "Modular Framework-Oriented Design",
     description:
-      "Systems should be built to fail gracefully. Retry policies, circuit breakers, fallbacks and graceful degradation are a fundamental part of the architecture.",
+      "Core systems are built as independent, reusable modules. I design services and frameworks rather than isolated scripts, integrating with structured architectures such as Knit when required to maintain consistency and scalability.",
   },
   {
     number: "04",
-    title: "Performance as a Feature",
+    title: "Bootstrap & Loader Pattern",
     description:
-      "Optimization is not an afterthought. Continuous profiling, performance budgets and automated benchmarks ensure the code stays fast as it evolves.",
+      "Every project begins with a controlled initialization flow. Centralized bootstrappers on both server and client handle service loading, dependency initialization, correct startup ordering, and race condition prevention.",
+  },
+  {
+    number: "05",
+    title: "Strict Typing & Explicit Contracts",
+    description:
+      "I prioritize strict typing and explicit system definitions. Clear interfaces, typed data structures, and predictable return contracts reduce ambiguity, prevent runtime errors, and improve long-term maintainability.",
+  },
+  {
+    number: "06",
+    title: "Backend-First Mentality",
+    description:
+      "Game mechanics are built on strong backend foundations. Before focusing on visuals, I ensure scalable state management, optimized datastore usage, structured networking flow, and reliable signal communication.",
+  },
+  {
+    number: "07",
+    title: "Signal-Based & Event-Driven Communication",
+    description:
+      "Internal communication is handled through structured signals and event-driven patterns. Modules communicate intentionally and explicitly, avoiding hidden dependencies and unpredictable side effects.",
+  },
+  {
+    number: "08",
+    title: "Performance & Optimization Awareness",
+    description:
+      "Performance is considered during system design, not after deployment. I actively optimize loop efficiency, memory usage, datastore frequency, replication strategy, and network payload size to ensure scalable and responsive gameplay.",
   },
 ]
 
