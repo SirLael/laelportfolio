@@ -55,7 +55,7 @@ const principles = [
 
 const codeLines = [
   "--!strict",
-  "-- @Big_Honor | sirlael",
+  "--@Big_Honor | sirlael",
   "",
   "local ServerScriptService = game:GetService(\"ServerScriptService\")",
   "local ServerCombatSystem = ServerScriptService:WaitForChild(\"ServerCombatSystem\")",
@@ -120,12 +120,15 @@ export function PhilosophySection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setVisibleLines((prev) => {
-        if (prev >= codeLines.length) return prev
-       return prev + 1
+        if (prev >= codeLines.length) {
+          clearInterval(interval)
+          return prev
+        }
+        return prev + 1
       })
     }, 80)
 
-  return () => clearInterval(interval)
+    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -167,7 +170,7 @@ export function PhilosophySection() {
                 </span>
               </div>
 
-              <div className="p-4 font-mono text-sm leading-relaxed">
+              <div className="p-4 font-mono text-sm leading-relaxed overflow-x-auto whitespace-pre">
                 {codeLines.map((line, i) => (
                   <div
                     key={i}
@@ -177,7 +180,7 @@ export function PhilosophySection() {
                     <span className="mr-4 w-6 text-right text-muted-foreground/40 select-none">
                       {i + 1}
                     </span>
-                    <span>
+                    <span className="whitespace-pre">
                       {formatCodeLine(line)}
                     </span>
                   </div>
@@ -224,7 +227,7 @@ function formatCodeLine(line: string) {
     "StateName",
   ]
 
-  const tokens = line.split(/(\s+|[{}()[\]:.=<>~]|"[^"]*"|`[^`]*`)/)
+  const tokens = line.split(/(\s+|[{}()[\]:.=<>~,]|::|"[^"]*"|`[^`]*`)/)
 
   return tokens.map((token, i) => {
     if (token.startsWith("--")) {
