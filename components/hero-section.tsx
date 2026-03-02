@@ -94,7 +94,7 @@ export function HeroSection() {
               <span className="h-3 w-3 rounded-full bg-destructive/60" />
               <span className="h-3 w-3 rounded-full bg-chart-4/60" />
               <span className="h-3 w-3 rounded-full bg-chart-2/60" />
-              <span className="ml-4 font-mono text-xs text-muted-foreground">engine.ts</span>
+              <span className="ml-4 font-mono text-xs text-muted-foreground">StateMachine.luau</span>
             </div>
 
             {/* Code content */}
