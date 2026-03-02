@@ -4,32 +4,60 @@ import { ExternalLinkIcon, GithubIcon } from "lucide-react"
 
 const projects = [
   {
-    title: "RPG Framework",
+    title: "Don't Get Crushed By An Avalanche",
+    role: "Lead Programmer / Main Scripter",
     description:
-      "Complete RPG game framework with inventory, quests, dialogues and combat systems. Modular component-based architecture with hot-reload configuration.",
-    tags: ["Luau", "Roblox", "ECS", "OOP"],
-    links: { github: "#", live: "#" },
+      "Developed a high-engagement multiplayer game where players race to climb a mountain while avoiding dynamic avalanches. Implemented a variety of interactive items and mechanics to enhance replayability in a low-poly, round-based design. Focused on smooth, addictive gameplay loops that drove high player retention and monetization. Led the full programming architecture, ensuring responsiveness and stability across rounds.",
+    tags: ["DynamicEnvironment", "MonetizationIntegration", "RoundSystem", "ServerAuthoritative"],
+    links: { live: "https://www.roblox.com/games/115491566739843/Dont-Get-Crushed-by-an-Avalanche" },
   },
   {
-    title: "Multiplayer Backend",
+    title: "Spoon Battles",
+    role: "Lead Programmer / Main Scripter",
     description:
-      "Backend infrastructure for real-time multiplayer games. Matchmaking system, state replication, anti-cheat and data persistence with high availability.",
-    tags: ["TypeScript", "Node.js", "Redis", "WebSocket"],
-    links: { github: "#", live: "#" },
+      "Created a skill-based PvP combat game with fluid, responsive mechanics centered around unique spoons and items. Engineered multiple abilities, inventory, and in-game economy systems, focusing on player-versus-player balance and competitive fairness. Oversaw the entire codebase, optimizing for real-time combat interactions and seamless arena experiences.",
+    tags: ["PvPCombat", "MultiplayerNetworking", "GameStateManagement", "SkillBasedMechanics"],
+    links: { live: "https://www.roblox.com/games/109032379461991/Spoon-Battles" },
   },
   {
-    title: "Admin Dashboard",
+    title: "AFK for UGC",
+    role: "Lead Programmer / Main Scripter",
     description:
       "Complete admin panel for managing games in production. Real-time monitoring, player management, analytics and moderation system.",
-    tags: ["React", "Next.js", "PostgreSQL", "REST API"],
-    links: { github: "#", live: "#" },
+    tags: ["BackendArchitecture", "ProfileStore", "DataPersistence", "WebhookTracking", "PlayerDataValidation"],
+    links: { live: "https://www.roblox.com/games/111837340716801/AFK-For-UGC" },
   },
   {
-    title: "DataStore Service",
+    title: "Velocity-Based Client-Side Prediction & Latency Compensation System",
+    role: "Main System Engineer",
     description:
-      "Data persistence service with multi-layered caching, automatic retry, incremental backup and zero-downtime schema migration.",
-    tags: ["Luau", "Redis", "Data Structures"],
-    links: { github: "#" },
+      "Engineered a high-precision, server-authoritative prediction system for multiplayer PvP, compensating for network latency and ensuring smooth, real-time synchronization of fast-moving entities. The system extrapolates client positions using velocity and movement vectors, minimizing perceived lag for remote players while maintaining deterministic server validation. Optimized for responsiveness in high-speed combat scenarios, it balances accuracy, prediction, and network efficiency, reducing jitter and desync without sacrificing gameplay integrity.",
+    tags: ["LatencyCompensation", "ClientSidePrediction", "NetworkOptimization", "EngineLevel", "PredictionSystem"],
+    links: { github: "https://github.com/SirLael/roblox/tree/main/portfolioSampleCodes/LatencyCompensationSystem" },
+  },
+  {
+    title: "Combat-Oriented Entity State Architecture",
+    role: "Lead Programmer / Main Scripter",
+    description:
+      "Developed a modular, server-authoritative Entity State Framework with full support for deterministic state transitions, validation, and multi-entity orchestration. Designed for PvP gameplay, enabling clean separation of concerns, extensibility of states, and predictable combat and movement flow.",
+    tags: ["StateMachine", "EntitySystem", "ServerAuthoritative", "CombatFlow", "Deterministic"],
+    links: { github: "https://github.com/SirLael/roblox/tree/main/portfolioSampleCodes/Combat-OrientedArchitecture" },
+  },
+  {
+    title: "Animator Track Caching System",
+    role: "Main Optimization Engineer",
+    description:
+      "Implemented a lifecycle-aware caching system for Humanoid Animators, preventing redundant animation loading, reducing replication overhead, and avoiding animation track limits in high-combat PvP environments. Designed for memory efficiency and automated cleanup when animators are removed.",
+    tags: ["MemoryManagement", "Cache", "ReusableModule", "GameDev", "Performance"],
+    links: { github: "https://github.com/SirLael/roblox/blob/main/portfolioSampleCodes/TrackCache.luau" },
+  },
+  {
+    title: "Event-Driven Timer System for PvP gameplay",
+    role: "Main System Engineer",
+    description:
+      "Built a frame-accurate, event-driven Timer System supporting countdown and stopwatch modes, promise-based awaitable timers, and centralized heartbeat updates. Includes full lifecycle management, modularity, and seamless integration with asynchronous gameplay systems.",
+    tags: ["Stopwatch", "Promise", "HeartbeatUpdate", "AsyncGameplay", "Countdown"],
+    links: { github: "https://github.com/SirLael/roblox/blob/main/portfolioSampleCodes/TimerController.luau" },
   },
 ]
 
@@ -63,6 +91,8 @@ export function ProjectsSection() {
               <h3 className="mb-2 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                 {project.title}
               </h3>
+
+              <p className="mb-4 text-xs font-mono text-primary/70">{project.role}</p>
 
               <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {project.description}
