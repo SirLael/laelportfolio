@@ -8,19 +8,19 @@ const contactLinks = [
       </svg>
     ),
     label: "Discord",
-    href: "#",
+    href: "https://discord.com/users/374713413173248001",
     username: "sirlael",
   },
   {
     icon: <MailIcon size={20} />,
     label: "Email",
-    href: "brianlaelsilva@gmail.com",
-    username: "contact@example.dev",
+    href: "mailto:brianlaelsilva@gmail.com",
+    username: "brianlaelsilva@gmail.com",
   },
   {
     icon: <GithubIcon size={20} />,
     label: "GitHub",
-    href: "#",
+    href: "https://github.com/sirlael",
     username: "github.com/sirlael",
   },
 ]
