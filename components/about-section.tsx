@@ -38,23 +38,15 @@ export function AboutSection() {
         <div className="grid gap-16 lg:grid-cols-5">
           {/* Text content */}
           <div className="lg:col-span-3">
+            <p className="mb-4 font-mono text-sm text-primary/70">
+              Brian Lael — 19 years old — Brazil (UTC-3 / GMT-3)
+            </p>
             <p className="text-pretty leading-relaxed text-muted-foreground md:text-lg">
-              My name is <strong>Brian Lael</strong>, I am <strong>19 years old</strong>, and I am a <strong>Brazilian software developer (UTC-3 / GMT-3)</strong>. 
               I am a software developer with <strong>over 8 years of programming experience</strong>, specializing in <strong>Luau and backend game systems architecture</strong>. I began programming at an early age as a self-taught developer, driven by curiosity about how systems work and how logic can be used to create interactive experiences. Since then, programming has evolved from a personal interest into my primary professional focus. I later completed a <strong>2-year Programming and Robotics certification at CTRL+PLAY</strong>, where I worked with languages such as C#, C++, and Java, and built my first structured game projects. I also completed a <strong>200-hour C programming course at Federal University of São Paulo</strong>, strengthening my understanding of low-level programming, memory, and computational logic. Currently, I am pursuing a <strong>Bachelor’s degree in Computer Science at Instituto Mauá de Tecnologia</strong>, further deepening my knowledge of algorithms, systems design, and software engineering principles.
             </p>
             <p className="mt-6 text-pretty leading-relaxed text-muted-foreground md:text-lg">
                My primary expertise is in <strong>Roblox game development</strong>, particularly <strong>backend systems, data persistence, and scalable architecture</strong>. I design <strong>modular, strictly typed systems</strong> that prioritize maintainability, performance, and clarity. My workflow includes <strong>structured bootstrapping</strong>, <strong>clear client-server boundaries</strong>, and <strong>organized module architecture</strong>, allowing projects to scale safely and efficiently. I approach programming not just as implementation, but as <strong>systems engineering</strong>—designing reliable foundations that enable complex and polished gameplay experiences. I am currently open to collaborating with studios and creators who value high-quality architecture, reliability, and long-term scalability.
             </p>
-
-            {/* Stats */}
-            <div className="mt-12 grid grid-cols-3 gap-8">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center lg:text-left">
-                  <div className="font-mono text-3xl font-bold text-primary">{stat.value}</div>
-                  <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Highlight cards */}
@@ -73,6 +65,20 @@ export function AboutSection() {
                 <p className="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
               </div>
             ))}
+
+            {/* Stats */}
+            <div className="mt-8 grid grid-cols-3 gap-6 border-t border-border pt-6">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="font-mono text-2xl font-bold text-primary">
+                    {stat.value}
+                  </div>
+                  <div className="mt-1 text-xs text-muted-foreground">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
