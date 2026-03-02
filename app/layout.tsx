@@ -11,7 +11,8 @@ export const metadata: Metadata = {
   description: 'Professional portfolio of Lael, a Software & Game Programmer. High-performance systems, scalable architecture and gameplay programming.',
   generator: 'Lael',
   icons: {
-    icon: '/L-icon.png'
+    icon: '/L-icon.png',
+    apple: '/L-icon.png'
   },
 }
 
