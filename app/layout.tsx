@@ -7,12 +7,28 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lael's Portfolio | Game Programmer & Backend Engineer",
+  title: "Lael Portfolio | Game Programmer & Backend Engineer",
   description: 'Professional portfolio of Lael, a Software & Game Programmer. High-performance systems, scalable architecture and gameplay programming.',
   generator: 'Lael',
   icons: {
     icon: '/L-icon.png',
     apple: '/L-icon.png'
+  },
+  openGraph: {
+    title: "Lael Portfolio | Game Programmer & Backend Engineer",
+    description:
+      "Professional portfolio of Lael, a Software & Game Programmer. High-performance systems, scalable architecture and gameplay programming.",
+    url: "https://laelportfolio.vercel.app/",
+    siteName: "Lael Portfolio",
+    images: [
+      {
+        url: "/L-icon.png",
+        width: 1200,
+        height: 630,
+        alt: "Lael Portfolio Preview",
+      },
+    ],
+    type: "website",
   },
 }
 
