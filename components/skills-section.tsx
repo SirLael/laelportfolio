@@ -11,12 +11,12 @@ const skillCategories = [
   {
     icon: SettingsIcon,
     title: "Core Systems",
-    skills: ["DataStore architeture", "Data Serialization", "Combat", "Currency", "Modular Systems", "NPC Features"],
+    skills: ["DataStore Architeture", "Data Serialization", "Combat", "Currency", "Modular Systems", "NPC Features"],
   },
   {
     icon: CpuIcon,
     title: "Architecture",
-    skills: ["Microservices", "Event-Driven", "Loaders/Boostrap Systems", "Domain-Driven Design", "Server Authoritative Design"],
+    skills: ["Microservices", "Event-Driven", "Loaders/Bootstrap Systems", "Domain-Driven Design", "Server Authoritative Design"],
   },
   {
     icon: GamepadIcon,
