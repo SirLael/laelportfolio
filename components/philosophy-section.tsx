@@ -1,3 +1,7 @@
+"use client"
+
+import { useEffect, useState } from "react"
+
 const principles = [
   {
     number: "01",
@@ -49,35 +53,81 @@ const principles = [
   },
 ]
 
-const codeBlock = `-- Architecture Pattern Example
-local SystemManager = {}
-SystemManager.__index = SystemManager
-
-function SystemManager.new()
-    return setmetatable({
-        _systems = {},
-        _running = false,
-        _tickRate = 1/60,
-    }, SystemManager)
-end
-
-function SystemManager:register(system)
-    assert(system.update, "System must implement update()")
-    table.insert(self._systems, system)
-    return self
-end
-
-function SystemManager:start()
-    self._running = true
-    while self._running do
-        local dt = task.wait(self._tickRate)
-        for _, system in self._systems do
-            system:update(dt)
-        end
-    end
-end`
+const codeLines = [
+  "--!strict",
+  "-- @Big_Honor | sirlael",
+  "",
+  "local ServerScriptService = game:GetService(\"ServerScriptService\")",
+  "local ServerCombatSystem = ServerScriptService:WaitForChild(\"ServerCombatSystem\")",
+  "",
+  "local Configs = ServerCombatSystem:WaitForChild(\"Configs\")",
+  "local Types = ServerCombatSystem:WaitForChild(\"Types\")",
+  "",
+  "local StatesConfig = require(Configs:WaitForChild(\"StatesConfig\"))",
+  "local StateMachineTypes = require(Types:WaitForChild(\"StateMachineTypes\"))",
+  "",
+  "local ReplicatedStorage = game:GetService(\"ReplicatedStorage\")",
+  "local FastSignal = require(ReplicatedStorage.SharedCombatSystem.Utils.FastSignal)",
+  "",
+  "local StateMachine = {}",
+  "StateMachine.__index = StateMachine",
+  "",
+  "function StateMachine.new(): StateMachine",
+  "    local self = setmetatable({}, StateMachine)",
+  "",
+  "    self._domains = StatesConfig",
+  "    self._currentStates = {}",
+  "    self._connections = {}",
+  "",
+  "    for domain, domainConfig in pairs(StatesConfig :: StateMachineTypes.StatesConfig) do",
+  "        local initial = domainConfig.Initial",
+  "        local states = domainConfig.States",
+  "",
+  "        if states[initial] ~= true then",
+  "            warn(`[StateMachine] Invalid initial state on Domain \"{domain}\": {initial}`)",
+  "        else",
+  "            self._currentStates[domain] = initial",
+  "            self._connections[domain] = FastSignal.new()",
+  "        end",
+  "    end",
+  "",
+  "    return self :: StateMachineTypes.StateMachine",
+  "end",
+  "",
+  "function StateMachine:SetState(domain: DomainName, newState: StateName): boolean",
+  "    local domainConfig = self._domains[domain]",
+  "    if domainConfig == nil then",
+  "        warn(`[StateMachine] Invalid domain: {domain}`)",
+  "        return false",
+  "    end",
+  "",
+  "    local states = domainConfig.States",
+  "    if states[newState] ~= true then",
+  "        return false",
+  "    end",
+  "",
+  "    self._currentStates[domain] = newState",
+  "    self._connections[domain]:Fire(newState)",
+  "    return true",
+  "end",
+  "",
+  "return StateMachine",
+]
 
 export function PhilosophySection() {
+  const [visibleLines, setVisibleLines] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisibleLines((prev) => {
+        if (prev >= codeLines.length) return prev
+       return prev + 1
+      })
+    }, 80)
+
+  return () => clearInterval(interval)
+  }, [])
+
   return (
     <section id="philosophy" className="relative py-32">
       <div className="mx-auto max-w-6xl px-6">
@@ -113,17 +163,86 @@ export function PhilosophySection() {
                 <span className="h-2.5 w-2.5 rounded-full bg-chart-4/60" />
                 <span className="h-2.5 w-2.5 rounded-full bg-chart-2/60" />
                 <span className="ml-3 font-mono text-xs text-muted-foreground">
-                  system-manager.lua
+                  StateMachine.luau
                 </span>
               </div>
 
-              <pre className="overflow-x-auto p-5 font-mono text-xs leading-relaxed text-foreground/80 md:text-sm">
-                <code>{codeBlock}</code>
-              </pre>
+              <div className="p-4 font-mono text-sm leading-relaxed">
+                {codeLines.map((line, i) => (
+                  <div
+                    key={i}
+                    className="flex transition-opacity duration-300"
+                    style={{ opacity: i < visibleLines ? 1 : 0 }}
+                  >
+                    <span className="mr-4 w-6 text-right text-muted-foreground/40 select-none">
+                      {i + 1}
+                    </span>
+                    <span>
+                      {formatCodeLine(line)}
+                    </span>
+                  </div>
+                ))}
+
+                <div className="flex">
+                  <span className="mr-4 w-6" />
+                  <span className="animate-terminal-blink inline-block h-5 w-2 bg-primary" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
   )
+}
+
+function formatCodeLine(line: string) {
+  if (!line.trim()) return <span>&nbsp;</span>
+
+  const keywords = [
+    "function",
+    "local",
+    "return",
+    "if",
+    "then",
+    "else",
+    "elseif",
+    "end",
+    "for",
+    "in",
+    "do",
+    "true",
+    "false",
+    "nil",
+    "export",
+  ]
+
+  const types = [
+    "StateMachine",
+    "StateMachineTypes",
+    "DomainName",
+    "StateName",
+  ]
+
+  const tokens = line.split(/(\s+|[{}()[\]:.=<>~]|"[^"]*"|`[^`]*`)/)
+
+  return tokens.map((token, i) => {
+    if (token.startsWith("--")) {
+      return <span key={i} className="text-muted-foreground/50">{token}</span>
+    }
+
+    if (keywords.includes(token)) {
+      return <span key={i} className="text-primary">{token}</span>
+    }
+
+    if (types.includes(token)) {
+      return <span key={i} className="text-accent">{token}</span>
+    }
+
+    if (token.startsWith('"') || token.startsWith("`")) {
+      return <span key={i} className="text-chart-2">{token}</span>
+    }
+
+    return <span key={i} className="text-foreground/80">{token}</span>
+  })
 }
