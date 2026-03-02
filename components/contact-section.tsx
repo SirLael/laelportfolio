@@ -9,19 +9,19 @@ const contactLinks = [
     ),
     label: "Discord",
     href: "#",
-    username: "dev#0001",
+    username: "sirlael",
   },
   {
     icon: <MailIcon size={20} />,
     label: "Email",
-    href: "mailto:contact@example.dev",
+    href: "brianlaelsilva@gmail.com",
     username: "contact@example.dev",
   },
   {
     icon: <GithubIcon size={20} />,
     label: "GitHub",
     href: "#",
-    username: "github.com/dev",
+    username: "github.com/sirlael",
   },
 ]
 
@@ -41,9 +41,22 @@ export function ContactSection() {
 
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-12 text-pretty leading-relaxed text-muted-foreground md:text-lg">
-            Interested in working together or discussing a project?
-            Reach out through any of the channels below.
+            Ready to turn an idea into a captivating gameplay experience? I am looking for innovative projects and inspiring collaborations. Get 
+            in touch so we can discuss how I can help with your next project.
           </p>
+
+          <div className="mb-10 rounded-lg border border-border bg-card/20 px-6 py-5 text-sm text-muted-foreground backdrop-blur-sm">
+            <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground/60 mb-3">
+              Engagement & Payment
+            </p>
+            <p className="leading-relaxed">
+              I work with <span className="text-foreground">Fixed price per project</span> or 
+              <span className="text-foreground"> Hourly rate</span>. Payments are accepted in 
+              <span className="text-foreground"> USD via PayPal</span>, 
+              <span className="text-foreground"> BRL</span>, or 
+              <span className="text-foreground"> Robux</span>.
+            </p>
+          </div>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             {contactLinks.map((link) => (
